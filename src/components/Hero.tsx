@@ -10,6 +10,7 @@ export default function Hero() {
         <img 
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2670" 
           alt="Jus Digital Luxury Office" 
+          fetchPriority="high"
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
         />

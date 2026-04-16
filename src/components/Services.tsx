@@ -39,7 +39,7 @@ export default function Services() {
              
              <div className="relative hidden md:block">
                <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl relative">
-                  <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2000" alt="Emissão rápida de Certificado Digital em escritório corporativo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img loading="lazy" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2000" alt="Emissão rápida de Certificado Digital em escritório corporativo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   <div className="absolute inset-0 bg-brand-900/10" />
                </div>
              </div>
@@ -108,24 +108,96 @@ export default function Services() {
               </a>
             </div>
             
-            <div className="relative hidden md:block group">
-              <div className="absolute inset-0 bg-accent-500/20 blur-[60px] rounded-full group-hover:bg-accent-500/30 transition-colors" />
-              <div className="w-full aspect-square bg-[#F4F2EE]/5 border border-white/10 rounded-[2.5rem] backdrop-blur-xl flex flex-col p-8 relative">
-                 {/* Decorative UI elements for a "System" vibe */}
-                 <div className="flex gap-2 mb-8">
-                    <div className="w-3 h-3 rounded-full bg-accent-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-accent-500/30"></div>
+            <div className="relative hidden md:block perspective-1000">
+              <div className="absolute inset-0 bg-accent-500/20 blur-[60px] rounded-full" />
+              <motion.div 
+                initial={{ opacity: 0, rotateX: 10, y: 30 }}
+                whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+                whileHover={{ scale: 1.02, rotateX: 5 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full aspect-[4/3] bg-brand-800 border border-white/10 rounded-[2.5rem] flex flex-col relative overflow-hidden shadow-2xl cursor-pointer"
+              >
+                 <div className="bg-brand-900/50 p-6 flex flex-col justify-between border-b border-white/5 relative z-10">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex gap-2">
+                         <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                         <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                         <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                      </div>
+                      <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest">Painel_Servicos_Digitais.exe</span>
+                    </div>
                  </div>
-                 <div className="space-y-4">
-                    <div className="h-10 w-3/4 rounded-lg bg-white/10 animate-pulse"></div>
-                    <div className="h-10 w-full rounded-lg bg-white/10 animate-pulse delay-75"></div>
-                    <div className="h-10 w-5/6 rounded-lg bg-white/10 animate-pulse delay-150"></div>
+                 
+                 <div className="p-6 space-y-4 flex-1 flex flex-col justify-center relative z-10 bg-gradient-to-b from-brand-800 to-brand-900">
+                    {[
+                      { icon: 'FileCheck', title: 'Auditoria de Notas Fiscais', delay: 0.2 },
+                      { icon: 'Zap', title: 'Automação Tributária', delay: 0.5 },
+                      { icon: 'Database', title: 'Sincronização com SEFAZ', delay: 0.8 }
+                    ].map((feature, i) => {
+                      const IconLabel = (LucideIcons as any)[feature.icon] || LucideIcons.Check;
+                      return (
+                        <motion.div 
+                          key={i}
+                          initial={{ opacity: 0, x: 30 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: feature.delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                          className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.06] transition-colors"
+                        >
+                           <div className="flex items-center gap-4">
+                             <div className="w-10 h-10 rounded-lg bg-brand-900 border border-white/[0.05] flex items-center justify-center text-accent-500 shadow-sm">
+                               <IconLabel size={18} strokeWidth={1.5} />
+                             </div>
+                             <span className="text-white font-medium text-[13px]">{feature.title}</span>
+                           </div>
+                           <div className="flex items-center gap-3">
+                             <motion.span 
+                               initial={{ opacity: 0 }} 
+                               whileInView={{ opacity: 1 }} 
+                               transition={{ delay: feature.delay + 0.8 }}
+                               className="text-[10px] uppercase font-bold tracking-widest text-[#27c93f]"
+                             >
+                               Ativo
+                             </motion.span>
+                             <motion.div 
+                               initial={{ scaleX: 0 }}
+                               whileInView={{ scaleX: 1 }}
+                               transition={{ delay: feature.delay + 0.3, duration: 0.8, ease: "circOut" }}
+                               className="h-[2px] w-8 bg-[#27c93f]/50 rounded-full origin-left"
+                             />
+                           </div>
+                        </motion.div>
+                      )
+                    })}
                  </div>
-                 <div className="mt-auto grid grid-cols-2 gap-4">
-                    <div className="h-24 rounded-2xl bg-accent-500/20 border border-accent-500/30"></div>
-                    <div className="h-24 rounded-2xl bg-white/5 border border-white/10"></div>
-                 </div>
-              </div>
+
+                 {/* Simulated notification popup */}
+                 <motion.div 
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, type: "spring", stiffness: 100 }}
+                    className="absolute bottom-6 left-6 right-6 flex items-center gap-4 p-4 rounded-2xl bg-accent-500/10 border border-accent-500/20 backdrop-blur-md z-20 shadow-xl"
+                 >
+                    <div className="relative">
+                      <LucideIcons.ShieldCheck className="text-accent-500 shrink-0 relative z-10" size={28} />
+                      <div className="absolute inset-0 bg-accent-500 blur-md opacity-40 animate-pulse"></div>
+                    </div>
+                    <div>
+                      <h5 className="text-accent-500 font-bold text-[10px] uppercase tracking-widest mb-1">Status da API Jurídica</h5>
+                      <p className="text-white/80 text-xs font-mono">100% Sincronizado e Seguro</p>
+                    </div>
+                 </motion.div>
+              </motion.div>
+              
+              {/* Floating Element */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 2, type: "spring" }}
+                className="absolute -right-6 -top-6 bg-white text-brand-900 px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 border border-brand-900/10 z-30"
+              >
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                Sistema Online
+              </motion.div>
             </div>
           </div>
         </motion.div>
