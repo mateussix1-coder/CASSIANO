@@ -1,110 +1,77 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Globe, Scale } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[70%] bg-accent-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[60%] bg-brand-900/5 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+      {/* Editorial Luxury Whitespace layout */}
+      <div className="max-w-[1400px] w-full mx-auto px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          
+          {/* Text Content (Oversized) */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 z-20"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 text-accent-500 text-xs font-bold uppercase tracking-widest mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
-              </span>
-              Líder em Tecnologia Documental
+            <div className="inline-flex items-center gap-4 mb-8">
+              <div className="h-[1px] w-12 bg-accent-500"></div>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">O Elo Global</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-brand-900 leading-[1.1] mb-6 text-balance">
-              Sua <span className="text-accent-500 italic">Conexão Documental</span> entre o Brasil e o Mundo.
+            <h1 className="text-6xl md:text-[5.5rem] font-medium text-brand-900 leading-[1.05] tracking-tight mb-8 text-balance">
+              Jus Digital: Sua <span className="text-accent-500 italic">Conexão Documental</span> entre o Brasil e o Mundo.
             </h1>
             
-            <p className="text-lg text-graphite-800 mb-8 max-w-xl leading-relaxed">
-              Resolvemos desde a emissão de Certificados Digitais até a busca de registros em cartórios para brasileiros e estrangeiros. Sincronizamos a burocracia com a agilidade do seu negócio.
+            <p className="text-xl md:text-2xl text-graphite-900 font-medium mb-12 max-w-2xl leading-relaxed">
+              Unimos a autoridade de um escritório especializado à velocidade da era digital. Certificados, certidões e regularizações globais em um só lugar.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-6 items-center">
               <a 
                 href="#services" 
-                className="bg-brand-900 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-all hover:translate-y-[-2px] shadow-lg shadow-brand-900/20"
+                className="bg-brand-900 text-[#F4F2EE] px-10 py-5 rounded-full font-medium tracking-wide flex items-center gap-3 hover:bg-brand-800 transition-all hover:translate-y-[-2px] shadow-2xl shadow-brand-900/20 text-sm uppercase"
               >
-                Emitir Certificado <ArrowRight size={20} />
+                Emitir Certificado Digital <ArrowRight size={18} />
               </a>
               <a 
-                href="#assistant" 
-                className="bg-white text-brand-900 border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all hover:translate-y-[-2px]"
+                href="#contact" 
+                className="bg-transparent border border-brand-900 text-brand-900 px-10 py-5 rounded-full font-medium tracking-wide flex items-center gap-3 hover:bg-brand-900/5 transition-all hover:translate-y-[-2px] text-sm uppercase"
               >
-                Falar com Assistente
+                Falar com Especialista
               </a>
-            </div>
-
-            <div className="mt-12 flex items-center gap-8 grayscale opacity-50">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={24} />
-                <span className="text-xs font-bold uppercase tracking-widest">Seguro</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe size={24} />
-                <span className="text-xs font-bold uppercase tracking-widest">Global</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Scale size={24} />
-                <span className="text-xs font-bold uppercase tracking-widest">Jurídico</span>
-              </div>
             </div>
           </motion.div>
 
+          {/* Architectural Image / Glassmorphism */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative hidden lg:block"
+            transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative hidden lg:block h-[550px]"
           >
-            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
+              {/* Minimalist modern architecture representing luxury office / slow-mo vibe */}
               <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" 
-                alt="Escritório Jus Digital" 
-                className="w-full h-[600px] object-cover"
+                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2075" 
+                alt="Propriedade de Alto Padrão - Jus Digital" 
+                className="w-full h-full object-cover scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 to-transparent" />
+              <div className="absolute inset-0 bg-brand-900/10" />
             </div>
 
-            {/* Floating Card 1 */}
+            {/* Glassmorphism Badge */}
             <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 glass p-6 rounded-2xl shadow-xl z-20 w-64"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="absolute bottom-12 -left-16 glass p-8 rounded-3xl z-20 max-w-[280px]"
             >
-              <div className="bg-accent-500 w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
-                <ShieldCheck size={24} />
-              </div>
-              <div className="font-bold text-brand-900 text-sm mb-1">Certificação Digital</div>
-              <div className="text-slate-500 text-xs">Emissão e-CPF e e-CNPJ em tempo recorde.</div>
-            </motion.div>
-
-            {/* Floating Card 2 */}
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-xl z-20 w-64"
-            >
-              <div className="bg-brand-900 w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
-                <Globe size={24} />
-              </div>
-              <div className="font-bold text-brand-900 text-sm mb-1">Presença Global</div>
-              <div className="text-slate-500 text-xs">Brasileiros ao redor do mundo conectados à Jus Digital.</div>
+              <div className="text-4xl font-serif text-brand-900 mb-2 italic">100%</div>
+              <div className="text-xs uppercase tracking-widest font-bold text-graphite-800 mb-2">Agilidade Jurídica</div>
+              <div className="text-graphite-900/90 text-sm font-medium leading-relaxed">O concierge documental para o cidadão global.</div>
             </motion.div>
           </motion.div>
         </div>

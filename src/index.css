@@ -1,24 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-brand-900: #0A1128; /* Azul Escuro Profundo */
-  --color-brand-800: #162447; /* Azul Marinho */
-  --color-graphite-900: #1C1C1E; /* Grafite */
-  --color-graphite-800: #2C2C2E;
-  --color-accent-500: #D4AF37; /* Dourado */
-  --color-accent-400: #E5C158; /* Dourado Claro */
+  --color-brand-900: #102A20; /* Deep Forest Green */
+  --color-brand-800: #194031;
+  --color-graphite-900: #2C2A28; /* Warm dark grey / almost black */
+  --color-graphite-800: #4A4643;
+  --color-accent-500: #CBA153; /* Gold Leaf */
+  --color-accent-400: #DDBD7E;
+  --color-warm-grey: #EAE7E1; /* Fendi light */
   
   --radius-xl: 1.5rem;
 }
 
 @layer base {
   body {
-    @apply bg-[#F9F9F8] text-graphite-900 font-sans;
+    @apply bg-[#F4F2EE] text-graphite-900 font-sans;
   }
   
   h1, h2, h3, h4 {
@@ -27,7 +28,7 @@
 }
 
 .glass {
-  @apply bg-[#F9F9F8]/80 backdrop-blur-md border border-white/20;
+  @apply bg-[#F4F2EE]/60 backdrop-blur-2xl border border-white/50 shadow-[0_8px_32px_rgba(16,42,32,0.06)];
 }
 
 .text-balance {

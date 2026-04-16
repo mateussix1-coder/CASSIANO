@@ -18,35 +18,21 @@ export const SERVICES: Service[] = [
   {
     id: 'certificacao-digital',
     title: 'Certificação Digital',
-    description: 'Oferecemos atendimento Home Office ou Presencial com agenda marcada para você obter seu e-CPF e e-CNPJ com segurança e comodidade.',
+    description: 'Como franqueados oficiais, trazemos o que há de mais seguro em identidade digital. Atendimento flexível: Você escolhe entre a conveniência do Home Office ou a exclusividade do atendimento presencial com agenda marcada.',
     icon: 'ShieldCheck',
     category: 'digital'
   },
   {
-    id: 'transcricao',
-    title: 'Transcrição de Documentos',
-    description: 'Promovemos a desburocratização real na regularização de registros estrangeiros no Brasil com total agilidade.',
+    id: 'cartorio-transcricao',
+    title: 'Cartório e Transcrições',
+    description: 'Acesso direto aos registros para transcrições, buscas de certidões e regularizações rápidas. Essencial para brasileiros no exterior e estrangeiros chegando ao Brasil que precisam de segurança jurídica imediata.',
     icon: 'FileText',
     category: 'cartorial'
   },
   {
-    id: 'certidoes',
-    title: 'Busca de Certidões',
-    description: 'Agilização e desburocratização real na obtenção de certidões de nascimento, casamento e óbito.',
-    icon: 'Search',
-    category: 'cartorial'
-  },
-  {
-    id: 'internacionalizacao',
-    title: 'Internacionalização',
-    description: 'Apoio documental para brasileiros no exterior e estrangeiros, unindo confiança jurídica e velocidade digital.',
-    icon: 'Globe',
-    category: 'international'
-  },
-  {
     id: 'sistema-notas',
-    title: 'Sistema de Emissão de Notas',
-    description: 'Solução inovadora que supre uma demanda crescente do mercado corporativo, não atendida pelos sistemas tradicionais.',
+    title: 'Escalabilidade de Inovação',
+    description: 'Implementamos um sistema inovador de emissão de notas para suprir uma demanda reprimida que os sistemas tradicionais não alcançam. Uma solução nova para um mercado que exige eficiência.',
     icon: 'BarChart3',
     category: 'digital'
   }

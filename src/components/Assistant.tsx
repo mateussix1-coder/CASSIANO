@@ -5,23 +5,29 @@ import { GoogleGenAI } from '@google/genai';
 import { Message } from '../types';
 
 const SYSTEM_INSTRUCTION = `
-Você é o assistente virtual inteligente da Jus Digital, uma consultoria jurídica liderada por um advogado especialista.
-Sua missão é converter visitantes em clientes, utilizando o portfólio de serviços jurídicos e a nova vertical de Certificação Digital.
+Você é o "Jus Bot", a inteligência comercial e Consultor Sênior da Jus Digital.
+Sua função é atuar como o primeiro ponto de contato de uma consultoria jurídica de alto padrão, especializada em desburocratização documental global (liderada por um advogado especialista).
 
-CONCEITOS CHAVE:
-1. Certificação Digital: O produto estrela. Destaque que Mateus é o responsável pelas vendas. Ofereça opções Home Office ou Presencial.
-2. Demandas Cartoriais: Para transcrições e certidões, solicite o tipo de registro necessário e informe que a Jus Digital possui acesso direto a sistemas de cartório.
-3. Internacionalização: Apoio a brasileiros no exterior ou estrangeiros no Brasil (Apostilamento, Traduções).
-4. Novo Sistema de Notas: Para empresas, mencione a solução para gargalos fiscais.
+CONTEXTO OPERACIONAL / BASE DE CONHECIMENTO:
+1. CERTIFICAÇÃO DIGITAL: Nosso produto de expansão/estrela, operado através de uma nova franquia. O atendimento comercial é liderado pelo Mateus e pode ser feito via Home Office (remoto) ou Presencial com agenda.
+2. SERVIÇOS DE CARTÓRIO E NOTAS: Especialistas em Certidões de Ônus Digital (Provimento 195/2025) e transcrições de documentos.
+3. SISTEMA DE NOTAS (PJ): Um novo sistema inovador de emissão de notas focada em suprir demandas reprimidas do mercado para empresas.
+4. PÚBLICO INTERNACIONAL: Atendemos brasileiros no exterior e estrangeiros vindo para o Brasil (Tradução Juramentada Oficial, Apostilamento de Haia, etc.).
 
-TOM DE VOZ:
-Profissional, resolutivo, seguro e sofisticado. Você representa a autoridade de um advogado e a agilidade de uma startup.
+DIRETRIZES DE COMPORTAMENTO E TOM DE VOZ:
+- Sofisticado, resolutivo, direto e seguro. Você tem a autoridade de quem domina o sistema de notas e registros e a agilidade de uma startup.
+- REGRAS DE OURO: NUNCA use clichês de IA (ex: "como um assistente virtual", "estamos aqui para ajudar"). Diga "A Jus Digital oferece a solução..."
+- Use frases de impacto como: "Sincronizamos a burocracia brasileira com a agilidade do seu tempo."
+- Evite "juridiquês" desnecessário, mas soe impecável e prático.
 
-FLUXO:
-- Seja breve e direto.
-- Tente identificar rapidamente a categoria do serviço.
-- Sempre direcione para um agendamento ou contato com Mateus ao final.
-- Evite termos jurídicos densos; foque na solução.
+LÓGICA DE TRIAGEM:
+- Se Certificado Digital: Enfatize agilidade, liderança do Mateus, emissão Home Office ou Presencial.
+- Se Cartório/Certidões: Solicite detalhes/quais documentos a pessoa já possui, informe que temos acesso direto a sistemas de cartório.
+- Se PJ/Empresa: Apresente a inovação do nosso sistema de emissão de notas.
+- Se Internacional/Exterior: Destaque nossa capacidade de resolver registros diretamente nos cartórios brasileiros.
+
+OBJETIVO DE CONVERSÃO EXCLUSIVO:
+Seu objetivo final é convencer o visitante a fechar a venda com o Mateus (se for certificado) ou agendar uma reunião para "Organização de Portfólio de Documentos" na sexta-feira.
 `;
 
 export default function Assistant() {
@@ -73,7 +79,7 @@ export default function Assistant() {
   };
 
   return (
-    <section id="assistant" className="py-24 relative overflow-hidden">
+    <section id="assistant" className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-brand-900/5 rounded-full blur-[100px]" />
       </div>
@@ -92,7 +98,7 @@ export default function Assistant() {
             <h2 className="text-4xl md:text-5xl font-bold text-brand-900 mb-6 !leading-tight">
               Triagem Digital Inteligente
             </h2>
-            <p className="text-graphite-800 text-lg mb-8 leading-relaxed">
+            <p className="text-graphite-900 text-lg mb-8 leading-relaxed font-medium">
               Não sabe por onde começar? Converse com nosso assistente. Ele foi treinado para identificar suas necessidades documentais e recomendar o melhor caminho jurídico em segundos.
             </p>
             
@@ -103,7 +109,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Identificação de Serviço</h4>
-                  <p className="text-sm text-graphite-800/70">Categoriza sua necessidade em Digital, Cartorial ou Internacional.</p>
+                  <p className="text-sm text-graphite-900/80 font-medium">Categoriza sua necessidade em Digital, Cartorial ou Internacional.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -112,7 +118,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Pré-análise Documental</h4>
-                  <p className="text-sm text-graphite-800/70">Informa quais documentos você já deve ter em mãos para agilizar.</p>
+                  <p className="text-sm text-graphite-900/80 font-medium">Informa quais documentos você já deve ter em mãos para agilizar.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -121,7 +127,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Conexão com Especialista</h4>
-                  <p className="text-sm text-graphite-800/70">Direciona você diretamente para o fechamento com nossa equipe comercial.</p>
+                  <p className="text-sm text-graphite-900/80 font-medium">Direciona você diretamente para o fechamento com nossa equipe comercial.</p>
                 </div>
               </div>
             </div>
@@ -131,7 +137,7 @@ export default function Assistant() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col h-[600px] bg-white rounded-[2.5rem] shadow-2xl border border-graphite-900/10 overflow-hidden"
+            className="flex flex-col h-[500px] bg-white rounded-[2.5rem] shadow-2xl border border-graphite-900/10 overflow-hidden"
           >
             {/* Header */}
             <div className="p-6 border-b border-graphite-900/10 flex items-center justify-between bg-brand-900 text-white">
