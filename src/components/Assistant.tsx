@@ -53,7 +53,18 @@ export default function Assistant() {
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+      
+      if (!apiKey || apiKey === 'undefined') {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: 'Erro: Chave da API (GEMINI_API_KEY) não configurada. Se você publicou no Vercel, por favor adicione a variável de ambiente VITE_GEMINI_API_KEY no painel do Vercel e faça um novo deploy.' 
+        }]);
+        setIsLoading(false);
+        return;
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: messages.concat(userMessage).map(m => ({
