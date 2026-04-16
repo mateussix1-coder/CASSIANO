@@ -16,9 +16,9 @@ CONTEXTO OPERACIONAL / BASE DE CONHECIMENTO:
 
 DIRETRIZES DE COMPORTAMENTO E TOM DE VOZ:
 - Sofisticado, resolutivo, direto e seguro. Você tem a autoridade de quem domina o sistema de notas e registros e a agilidade de uma startup.
-- REGRAS DE OURO: NUNCA use clichês de IA (ex: "como um assistente virtual", "estamos aqui para ajudar"). Diga "A Jus Digital oferece a solução..."
-- Use frases de impacto como: "Sincronizamos a burocracia brasileira com a agilidade do seu tempo."
-- Evite "juridiquês" desnecessário, mas soe impecável e prático.
+- REGRAS DE OURO: NUNCA use clichês de IA (ex: "como um assistente virtual"). 
+- FORMATAÇÃO: Responda como se fosse uma mensagem de WhatsApp Corporativo. NÃO use asteriscos (**) ou formatação complexa de Markdown. Use hifens (-) para criar listas limpas e separe parágrafos pulando linhas.
+- Você conversa direto ao ponto.
 
 LÓGICA DE TRIAGEM:
 - Se Certificado Digital: Enfatize agilidade, liderança do Mateus, emissão Home Office ou Presencial.
@@ -30,6 +30,23 @@ OBJETIVO DE CONVERSÃO EXCLUSIVO:
 Seu objetivo final é convencer o visitante a fechar a venda com o Mateus (se for certificado) ou agendar uma reunião para "Organização de Portfólio de Documentos" na sexta-feira.
 `;
 
+const formatMessage = (content: string) => {
+  return content.split('\n').map((line, i) => {
+    const parts = line.split(/(\*\*.*?\*\*)/g);
+    return (
+      <React.Fragment key={i}>
+        {parts.map((part, j) => {
+          if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={j} className="font-bold">{part.slice(2, -2)}</strong>;
+          }
+          return <span key={j}>{part}</span>;
+        })}
+        {i < content.split('\n').length - 1 && <br className="mb-2" />}
+      </React.Fragment>
+    );
+  });
+};
+
 export default function Assistant() {
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Olá! Sou o assistente da Jus Digital. Como posso ajudar com sua documentação ou certificação digital hoje?' }
@@ -40,7 +57,10 @@ export default function Assistant() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
     }
   }, [messages]);
 
@@ -53,12 +73,13 @@ export default function Assistant() {
     setIsLoading(true);
 
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+      // The API key is securely injected by Vite's define plugin during build/runtime
+      const apiKey = process.env.GEMINI_API_KEY;
       
       if (!apiKey || apiKey === 'undefined') {
         setMessages(prev => [...prev, { 
           role: 'assistant', 
-          content: 'Erro: Chave da API (GEMINI_API_KEY) não configurada. Se você publicou no Vercel, por favor adicione a variável de ambiente VITE_GEMINI_API_KEY no painel do Vercel e faça um novo deploy.' 
+          content: 'Erro: Chave da API (GEMINI_API_KEY) não configurada. Se você publicou no Vercel, por favor adicione a variável de ambiente GEMINI_API_KEY no painel do Vercel e faça um novo deploy.' 
         }]);
         setIsLoading(false);
         return;
@@ -66,7 +87,7 @@ export default function Assistant() {
 
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.1-pro-preview",
         contents: messages.concat(userMessage).map(m => ({
           role: m.role === 'assistant' ? 'model' : 'user',
           parts: [{ text: m.content }]
@@ -194,7 +215,7 @@ export default function Assistant() {
                         ? 'bg-[#F9F9F8] text-graphite-900 rounded-bl-none border border-graphite-900/10' 
                         : 'bg-brand-900 text-accent-500 rounded-br-none'
                     }`}>
-                      {msg.content}
+                      {msg.role === 'assistant' ? formatMessage(msg.content) : msg.content}
                     </div>
                   </div>
                 </motion.div>

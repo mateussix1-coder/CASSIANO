@@ -10,10 +10,11 @@ import Services from './components/Services';
 import Assistant from './components/Assistant';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   return (
-    <div className="min-h-screen selection:bg-accent-500/30 selection:text-brand-900">
+    <div className="min-h-screen selection:bg-accent-500/30 selection:text-brand-900 scroll-smooth">
       <Header />
       <main>
         <Hero />
@@ -22,6 +23,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

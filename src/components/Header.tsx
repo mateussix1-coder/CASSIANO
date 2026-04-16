@@ -23,18 +23,20 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500 ${
+        isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(16,42,32,0.05)] border border-brand-900/10 rounded-full py-3 px-8' : ''
+      }`}>
         <a href="#home" className="flex items-center gap-2 group">
-          <div className="bg-brand-900 p-2 rounded-lg text-white group-hover:scale-110 transition-transform">
-            <Gavel size={24} />
+          <div className="bg-brand-900 p-2 rounded-lg text-accent-500 group-hover:scale-110 transition-transform shadow-lg">
+            <Gavel size={22} strokeWidth={2}/>
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-xl font-serif font-bold tracking-tight text-brand-900">Jus Digital</span>
-            <span className="text-[10px] uppercase tracking-widest font-sans font-semibold text-accent-500">Consultoria Jurídica</span>
+            <span className="text-[10px] uppercase tracking-widest font-sans font-semibold text-graphite-900/60 mt-[2px]">Consultoria Jurídica</span>
           </div>
         </a>
 
@@ -44,16 +46,16 @@ export default function Header() {
             <a 
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-graphite-800 hover:text-brand-900 transiton-colors"
+              className="text-sm font-bold text-graphite-900 hover:text-accent-500 transition-colors uppercase tracking-widest"
             >
               {link.name}
             </a>
           ))}
           <a 
             href="#contact" 
-            className="bg-brand-900 text-accent-500 px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-800 transition-colors shadow-md"
+            className="bg-brand-900 text-accent-500 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-800 transition-colors shadow-md hover:shadow-xl ml-4"
           >
-            Falar com Mateus
+            Falar com Especialista
           </a>
         </nav>
 
