@@ -6,17 +6,19 @@
   --font-serif: "Playfair Display", serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-brand-900: #0f172a; /* Deep Navy */
-  --color-brand-800: #1e293b;
-  --color-accent-500: #b45309; /* Deep Amber/Gold */
-  --color-accent-400: #d97706;
+  --color-brand-900: #0A1128; /* Azul Escuro Profundo */
+  --color-brand-800: #162447; /* Azul Marinho */
+  --color-graphite-900: #1C1C1E; /* Grafite */
+  --color-graphite-800: #2C2C2E;
+  --color-accent-500: #D4AF37; /* Dourado */
+  --color-accent-400: #E5C158; /* Dourado Claro */
   
   --radius-xl: 1.5rem;
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 font-sans;
+    @apply bg-[#F9F9F8] text-graphite-900 font-sans;
   }
   
   h1, h2, h3, h4 {
@@ -25,7 +27,7 @@
 }
 
 .glass {
-  @apply bg-white/80 backdrop-blur-md border border-white/20;
+  @apply bg-[#F9F9F8]/80 backdrop-blur-md border border-white/20;
 }
 
 .text-balance {

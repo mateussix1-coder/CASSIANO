@@ -92,7 +92,7 @@ export default function Assistant() {
             <h2 className="text-4xl md:text-5xl font-bold text-brand-900 mb-6 !leading-tight">
               Triagem Digital Inteligente
             </h2>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+            <p className="text-graphite-800 text-lg mb-8 leading-relaxed">
               Não sabe por onde começar? Converse com nosso assistente. Ele foi treinado para identificar suas necessidades documentais e recomendar o melhor caminho jurídico em segundos.
             </p>
             
@@ -103,7 +103,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Identificação de Serviço</h4>
-                  <p className="text-sm text-slate-500">Categoriza sua necessidade em Digital, Cartorial ou Internacional.</p>
+                  <p className="text-sm text-graphite-800/70">Categoriza sua necessidade em Digital, Cartorial ou Internacional.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -112,7 +112,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Pré-análise Documental</h4>
-                  <p className="text-sm text-slate-500">Informa quais documentos você já deve ter em mãos para agilizar.</p>
+                  <p className="text-sm text-graphite-800/70">Informa quais documentos você já deve ter em mãos para agilizar.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -121,7 +121,7 @@ export default function Assistant() {
                 </div>
                 <div>
                   <h4 className="font-bold text-brand-900 mb-1">Conexão com Especialista</h4>
-                  <p className="text-sm text-slate-500">Direciona você diretamente para o fechamento com nossa equipe comercial.</p>
+                  <p className="text-sm text-graphite-800/70">Direciona você diretamente para o fechamento com nossa equipe comercial.</p>
                 </div>
               </div>
             </div>
@@ -131,10 +131,10 @@ export default function Assistant() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col h-[600px] bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden"
+            className="flex flex-col h-[600px] bg-white rounded-[2.5rem] shadow-2xl border border-graphite-900/10 overflow-hidden"
           >
             {/* Header */}
-            <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-brand-900 text-white">
+            <div className="p-6 border-b border-graphite-900/10 flex items-center justify-between bg-brand-900 text-white">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <Bot size={24} />
@@ -156,7 +156,7 @@ export default function Assistant() {
             {/* Messages */}
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-slate-200"
+              className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-graphite-900/20"
             >
               {messages.map((msg, i) => (
                 <motion.div
@@ -167,14 +167,14 @@ export default function Assistant() {
                 >
                   <div className={`flex items-end gap-3 max-w-[85%] ${msg.role === 'assistant' ? 'flex-row' : 'flex-row-reverse'}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                      msg.role === 'assistant' ? 'bg-slate-100 text-brand-900' : 'bg-accent-500 text-white'
+                      msg.role === 'assistant' ? 'bg-[#F9F9F8] text-brand-900' : 'bg-accent-500 text-brand-900'
                     }`}>
                       {msg.role === 'assistant' ? <Bot size={16} /> : <User size={16} />}
                     </div>
                     <div className={`p-4 rounded-2xl text-sm leading-relaxed ${
                       msg.role === 'assistant' 
-                        ? 'bg-slate-50 text-slate-700 rounded-bl-none border border-slate-100' 
-                        : 'bg-brand-900 text-white rounded-br-none'
+                        ? 'bg-[#F9F9F8] text-graphite-900 rounded-bl-none border border-graphite-900/10' 
+                        : 'bg-brand-900 text-accent-500 rounded-br-none'
                     }`}>
                       {msg.content}
                     </div>
@@ -183,7 +183,7 @@ export default function Assistant() {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-slate-50 p-4 rounded-2xl rounded-bl-none border border-slate-100 flex gap-1">
+                  <div className="bg-[#F9F9F8] p-4 rounded-2xl rounded-bl-none border border-graphite-900/10 flex gap-1">
                     <motion.div animate={{ opacity: [1, 0.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 bg-brand-900 rounded-full" />
                     <motion.div animate={{ opacity: [1, 0.3, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 bg-brand-900 rounded-full" />
                     <motion.div animate={{ opacity: [1, 0.3, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 bg-brand-900 rounded-full" />
@@ -193,7 +193,7 @@ export default function Assistant() {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-slate-100">
+            <div className="p-4 border-t border-graphite-900/10">
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -201,17 +201,17 @@ export default function Assistant() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Descreva sua necessidade..."
-                  className="w-full pl-6 pr-14 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-500/20 focus:border-accent-500 transition-all text-sm"
+                  className="w-full pl-6 pr-14 py-4 bg-[#F9F9F8] border border-graphite-900/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-900/20 focus:border-brand-900 transition-all text-sm"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 p-3 bg-brand-900 text-white rounded-xl hover:bg-slate-800 disabled:opacity-50 disabled:hover:bg-brand-900 transition-all"
+                  className="absolute right-2 p-3 bg-brand-900 text-accent-500 rounded-xl hover:bg-brand-800 disabled:opacity-50 disabled:hover:bg-brand-900 transition-all"
                 >
                   <Send size={20} />
                 </button>
               </div>
-              <p className="text-[10px] text-center text-slate-400 mt-3 uppercase tracking-widest font-bold">
+              <p className="text-[10px] text-center text-graphite-800/50 mt-3 uppercase tracking-widest font-bold">
                 Poder Jurídico & Inteligência Digital
               </p>
             </div>

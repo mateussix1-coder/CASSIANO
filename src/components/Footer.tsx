@@ -18,7 +18,7 @@ export default function Footer() {
                 <span className="text-[10px] uppercase tracking-widest font-sans font-semibold text-accent-500 opacity-80">Soluções Documentais</span>
               </div>
             </div>
-            <p className="text-slate-400 leading-relaxed mb-6">
+            <p className="text-white/70 leading-relaxed mb-6">
               Simplificando o complexo. Sua parceira digital para certificados, registros e regularização documental global.
             </p>
             <div className="flex gap-4">
@@ -37,26 +37,26 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-accent-500">Links Rápidos</h4>
             <ul className="space-y-4">
-              <li><a href="#home" className="text-slate-300 hover:text-white transition-colors">Início</a></li>
-              <li><a href="#services" className="text-slate-300 hover:text-white transition-colors">Serviços</a></li>
-              <li><a href="#assistant" className="text-slate-300 hover:text-white transition-colors">Assistente</a></li>
-              <li><a href="#contact" className="text-slate-300 hover:text-white transition-colors">Contato</a></li>
+              <li><a href="#home" className="text-white/70 hover:text-white transition-colors">Início</a></li>
+              <li><a href="#services" className="text-white/70 hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="#assistant" className="text-white/70 hover:text-white transition-colors">Assistente</a></li>
+              <li><a href="#contact" className="text-white/70 hover:text-white transition-colors">Contato</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-accent-500">Serviços</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Certificado e-CPF</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Certificado e-CNPJ</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Busca de Registros</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Apostilamento</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Certificado e-CPF</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Certificado e-CNPJ</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Busca de Registros</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Apostilamento</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-accent-500">Newsletter</h4>
-            <p className="text-slate-400 text-sm mb-6">Receba atualizações sobre legislação e tecnologia documental.</p>
+            <p className="text-white/70 text-sm mb-6">Receba atualizações sobre legislação e tecnologia documental.</p>
             <div className="relative">
               <input 
                 type="email" 
@@ -70,12 +70,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs font-bold uppercase tracking-widest">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-white/50 text-xs font-bold uppercase tracking-widest">
           <div>© {currentYear} Jus Digital - Todos os direitos reservados.</div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-slate-300 transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-slate-300 transition-colors">Termos</a>
-            <a href="#" className="hover:text-slate-300 transition-colors">FAQ</a>
+            <a href="#" className="hover:text-white/80 transition-colors">Privacidade</a>
+            <a href="#" className="hover:text-white/80 transition-colors">Termos</a>
+            <a href="#" className="hover:text-white/80 transition-colors">FAQ</a>
           </div>
         </div>
       </div>

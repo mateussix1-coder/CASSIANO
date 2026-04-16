@@ -27,11 +27,11 @@ export default function Hero() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold text-brand-900 leading-[1.1] mb-6 text-balance">
-              Sua ponte <span className="text-accent-500 italic">documental</span> entre o Brasil e o Mundo.
+              Sua <span className="text-accent-500 italic">Conexão Documental</span> entre o Brasil e o Mundo.
             </h1>
             
-            <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-              Desburocratização jurídica com tecnologia. Obtenha certificados digitais, transcrições e certidões com a agilidade que você precisa, onde quer que você esteja.
+            <p className="text-lg text-graphite-800 mb-8 max-w-xl leading-relaxed">
+              Resolvemos desde a emissão de Certificados Digitais até a busca de registros em cartórios para brasileiros e estrangeiros. Sincronizamos a burocracia com a agilidade do seu negócio.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -73,7 +73,7 @@ export default function Hero() {
           >
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2070" 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" 
                 alt="Escritório Jus Digital" 
                 className="w-full h-[600px] object-cover"
                 referrerPolicy="no-referrer"
