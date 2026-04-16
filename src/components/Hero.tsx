@@ -4,75 +4,59 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Editorial Luxury Whitespace layout */}
+    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-[#0A1118]">
+      {/* Background Image Setup (Luxury dark office / marble style with city view) */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2670" 
+          alt="Jus Digital Luxury Office" 
+          className="w-full h-full object-cover object-center"
+          referrerPolicy="no-referrer"
+        />
+        {/* Dark overlay to merge with marble/dark sophisticated tone */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#080d12]/95 via-[#080d12]/80 to-[#080d12]/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080d12] via-[#080d12]/30 to-transparent" />
+      </div>
+
       <div className="max-w-[1400px] w-full mx-auto px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           
-          {/* Text Content (Oversized) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 z-20"
+            className="lg:col-span-8 z-20"
           >
             <div className="inline-flex items-center gap-4 mb-8">
               <div className="h-[1px] w-12 bg-accent-500"></div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">O Elo Global</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">
+                Excelência Documental Global
+              </span>
             </div>
             
-            <h1 className="text-6xl md:text-[5.5rem] font-medium text-brand-900 leading-[1.05] tracking-tight mb-8 text-balance">
-              Jus Digital: Sua <span className="text-accent-500 italic">Conexão Documental</span> entre o Brasil e o Mundo.
+            <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1] tracking-tight mb-8">
+              Sua <span className="text-accent-500" style={{ textShadow: '0 0 40px rgba(198, 168, 124, 0.3)' }}>Conexão Documental</span><br />
+              entre o Brasil e o Mundo.
             </h1>
             
-            <p className="text-xl md:text-2xl text-graphite-900 font-medium mb-12 max-w-2xl leading-relaxed">
-              Unimos a autoridade de um escritório especializado à velocidade da era digital. Certificados, certidões e regularizações globais em um só lugar.
+            <p className="text-lg md:text-xl text-white/70 font-medium mb-12 max-w-2xl leading-relaxed">
+              Unimos a autoridade de um escritório de elite com a agilidade do seu tempo. Certificados digitais, serviços cartoriais e regularizações em um padrão de luxo resolvidos de forma impecável.
             </p>
 
             <div className="flex flex-wrap gap-6 items-center">
               <a 
                 href="#services" 
-                className="bg-brand-900 text-[#F4F2EE] px-10 py-5 rounded-full font-medium tracking-wide flex items-center gap-3 hover:bg-brand-800 transition-all hover:translate-y-[-2px] shadow-2xl shadow-brand-900/20 text-sm uppercase"
+                className="bg-accent-500 text-brand-900 px-10 py-5 rounded-full font-bold tracking-widest flex items-center gap-3 hover:bg-[#d8bb8d] transition-all hover:translate-y-[-2px] shadow-[0_0_30px_rgba(198,168,124,0.3)] text-xs uppercase"
               >
-                Emitir Certificado Digital <ArrowRight size={18} />
+                Emitir Certificado <ArrowRight size={18} />
               </a>
               <a 
                 href="#contact" 
-                className="bg-transparent border border-brand-900 text-brand-900 px-10 py-5 rounded-full font-medium tracking-wide flex items-center gap-3 hover:bg-brand-900/5 transition-all hover:translate-y-[-2px] text-sm uppercase"
+                className="bg-transparent border border-white/20 text-white px-10 py-5 rounded-full font-bold tracking-widest flex items-center gap-3 hover:bg-white/10 transition-all hover:translate-y-[-2px] text-xs uppercase backdrop-blur-sm"
               >
-                Falar com Especialista
+                Organizar Portfólio
               </a>
             </div>
-          </motion.div>
-
-          {/* Architectural Image / Glassmorphism */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative hidden lg:block h-[550px]"
-          >
-            <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
-              {/* Minimalist modern architecture representing luxury office / slow-mo vibe */}
-              <img 
-                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2075" 
-                alt="Propriedade de Alto Padrão - Jus Digital" 
-                className="w-full h-full object-cover scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-brand-900/10" />
-            </div>
-
-            {/* Glassmorphism Badge */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute bottom-12 -left-16 glass p-8 rounded-3xl z-20 max-w-[280px]"
-            >
-              <div className="text-4xl font-serif text-brand-900 mb-2 italic">100%</div>
-              <div className="text-xs uppercase tracking-widest font-bold text-graphite-800 mb-2">Agilidade Jurídica</div>
-              <div className="text-graphite-900/90 text-sm font-medium leading-relaxed">O concierge documental para o cidadão global.</div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function Services() {
              
              <div className="relative hidden md:block">
                <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl relative">
-                  <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=2070" alt="Assinatura de Contratos e Documentos Jurídicos" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2000" alt="Emissão rápida de Certificado Digital em escritório corporativo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   <div className="absolute inset-0 bg-brand-900/10" />
                </div>
              </div>

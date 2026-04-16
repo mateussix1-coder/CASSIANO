@@ -31,12 +31,12 @@ export default function Header() {
         isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(16,42,32,0.05)] border border-brand-900/10 rounded-full py-3 px-8' : ''
       }`}>
         <a href="#home" className="flex items-center gap-2 group">
-          <div className="bg-brand-900 p-2 rounded-lg text-accent-500 group-hover:scale-110 transition-transform shadow-lg">
+          <div className={`p-2 rounded-lg transition-transform shadow-lg group-hover:scale-110 ${isScrolled ? 'bg-brand-900 text-accent-500' : 'bg-accent-500 text-brand-900'}`}>
             <Gavel size={22} strokeWidth={2}/>
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-xl font-serif font-bold tracking-tight text-brand-900">Jus Digital</span>
-            <span className="text-[10px] uppercase tracking-widest font-sans font-semibold text-graphite-900/60 mt-[2px]">Consultoria Jurídica</span>
+            <span className={`text-xl font-serif font-bold tracking-tight ${isScrolled ? 'text-brand-900' : 'text-white'}`}>Jus Digital</span>
+            <span className={`text-[10px] uppercase tracking-widest font-sans font-semibold mt-[2px] ${isScrolled ? 'text-graphite-900/60' : 'text-white/70'}`}>Consultoria Jurídica</span>
           </div>
         </a>
 
@@ -46,14 +46,14 @@ export default function Header() {
             <a 
               key={link.name}
               href={link.href}
-              className="text-sm font-bold text-graphite-900 hover:text-accent-500 transition-colors uppercase tracking-widest"
+              className={`text-sm font-bold transition-colors uppercase tracking-widest ${isScrolled ? 'text-graphite-900 hover:text-accent-500' : 'text-white/80 hover:text-accent-500'}`}
             >
               {link.name}
             </a>
           ))}
           <a 
             href="#contact" 
-            className="bg-brand-900 text-accent-500 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-800 transition-colors shadow-md hover:shadow-xl ml-4"
+            className={`${isScrolled ? 'bg-brand-900 text-accent-500' : 'bg-white text-brand-900'} px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-md ml-4`}
           >
             Falar com Especialista
           </a>
@@ -61,7 +61,7 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-brand-900"
+          className={`md:hidden ${isScrolled ? 'text-brand-900' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
