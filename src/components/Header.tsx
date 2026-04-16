@@ -28,7 +28,7 @@ export default function Header() {
       }`}
     >
       <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(16,42,32,0.05)] border border-brand-900/10 rounded-full py-3 px-8' : ''
+        isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(10,25,47,0.05)] border border-brand-900/10 rounded-full py-3 px-8' : ''
       }`}>
         <a href="#home" className="flex items-center gap-2 group">
           <div className={`p-2 rounded-lg transition-transform shadow-lg group-hover:scale-110 ${isScrolled ? 'bg-brand-900 text-accent-500' : 'bg-accent-500 text-brand-900'}`}>

@@ -140,7 +140,7 @@ export default function Contact() {
                 <button 
                   type="submit"
                   disabled={formState !== 'idle'}
-                  className="w-full bg-brand-900 text-accent-500 py-6 rounded-[1.2rem] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-brand-800 transition-all shadow-[0_8px_32px_rgba(16,42,32,0.15)] mt-4 flex items-center justify-center gap-3 disabled:opacity-70"
+                  className="w-full bg-brand-900 text-accent-500 py-6 rounded-[1.2rem] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-brand-800 transition-all shadow-[0_8px_32px_rgba(10,25,47,0.15)] mt-4 flex items-center justify-center gap-3 disabled:opacity-70"
                 >
                   {formState === 'submitting' ? (
                     <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}>
