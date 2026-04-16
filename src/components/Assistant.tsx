@@ -66,7 +66,7 @@ export default function Assistant() {
 
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.5-flash",
         contents: messages.concat(userMessage).map(m => ({
           role: m.role === 'assistant' ? 'model' : 'user',
           parts: [{ text: m.content }]
@@ -78,12 +78,13 @@ export default function Assistant() {
 
       const assistantMessage: Message = { 
         role: 'assistant', 
-        content: response.text || 'Desculpe, tive um problema ao processar sua solicitação. Poderia repetir?' 
+        content: response.text || 'Desculpe, não consegui gerar uma resposta. Poderia repetir?' 
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Error generating AI response:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Houve um erro técnico. Por favor, tente novamente em instantes.' }]);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      setMessages(prev => [...prev, { role: 'assistant', content: `Houve um erro técnico de comunicação. Detalhe: ${errorMessage}` }]);
     } finally {
       setIsLoading(false);
     }
