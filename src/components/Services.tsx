@@ -1,36 +1,36 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { SERVICES } from '../types';
+import { SECONDARY_SERVICES } from '../types';
 import * as LucideIcons from 'lucide-react';
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 bg-[#F4F2EE] relative">
-      <div className="max-w-[1400px] mx-auto px-8 relative z-10">
+    <section id="services" className="py-16 md:py-20 bg-[#F4F2EE] relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-8 relative z-10">
         
         {/* Seção 01: Certificação Digital */}
         <motion.div
            initial={{ opacity: 0, y: 40 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="glass p-12 md:p-16 rounded-[3rem] mb-16 relative overflow-hidden"
+           className="glass p-8 md:p-12 lg:p-16 rounded-[2rem] md:rounded-[3rem] mb-16 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
-          <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
              <div>
-               <div className="inline-flex items-center gap-4 mb-6">
-                 <div className="h-[1px] w-8 bg-accent-500"></div>
-                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">Certificação Digital</span>
+               <div className="inline-flex items-center gap-3 mb-6">
+                 <div className="h-[1px] w-6 md:w-8 bg-accent-500"></div>
+                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-accent-500">Certificação Digital</span>
                </div>
-               <h3 className="text-5xl font-serif font-medium text-brand-900 mb-8 leading-[1.1]">
+               <h3 className="text-4xl md:text-5xl font-serif font-medium text-brand-900 mb-6 md:mb-8 leading-[1.1] text-balance">
                  Sua Identidade <span className="italic text-accent-500">Digital Segura</span>
                </h3>
-               <p className="text-graphite-900/90 font-medium leading-relaxed mb-8 text-xl">
+               <p className="text-graphite-900/90 font-medium leading-relaxed mb-8 text-base md:text-xl">
                  Adquirimos uma nova franquia de emissão para garantir segurança total na sua identidade digital. Liderado pelo nosso especialista Mateus, oferecemos suporte remoto total ou atendimento físico agendado para sua conveniência.
                </p>
                <a 
                  href="#contact" 
-                 className="text-xs uppercase tracking-[0.15em] font-bold text-brand-900 flex items-center gap-3 hover:gap-5 transition-all duration-300"
+                 className="text-[11px] md:text-xs uppercase tracking-[0.15em] font-bold text-brand-900 flex items-center gap-3 hover:gap-5 transition-all duration-300"
                >
                  Falar com Especialista 
                  <LucideIcons.ArrowRight size={16} strokeWidth={1.5} />
@@ -47,24 +47,42 @@ export default function Services() {
         </motion.div>
 
         {/* Seção 02: Inteligência Documental */}
-        <div className="mb-16">
-          <div className="text-center mb-16">
+        <div className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
             <h3 className="text-4xl text-brand-900 font-serif font-medium">Inteligência Documental</h3>
             <p className="text-graphite-900/90 font-medium mt-4 text-lg">Internacional e Cartório</p>
-          </div>
+          </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, index) => {
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }
+              }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {SECONDARY_SERVICES.map((service, index) => {
               const Icon = (LucideIcons as any)[service.icon] || LucideIcons.FileText;
               return (
                 <motion.div
                   key={service.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -8 }}
-                  className="glass p-10 rounded-[2rem] group relative overflow-hidden flex flex-col items-center text-center"
+                  variants={{
+                    hidden: { opacity: 0, y: 50, scale: 0.95 },
+                    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
+                  className="glass p-10 rounded-[2rem] group relative overflow-hidden flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-shadow duration-500"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-[#F4F2EE] text-brand-900 flex items-center justify-center mb-8 border border-white/60 shadow-sm transition-transform group-hover:scale-110 duration-500">
                     <Icon size={32} strokeWidth={1.5} />
@@ -78,7 +96,7 @@ export default function Services() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         {/* Seção 03: Inovação para Empresas */}
@@ -86,24 +104,24 @@ export default function Services() {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-brand-900 rounded-[3rem] p-12 md:p-16 text-[#F4F2EE] relative overflow-hidden shadow-2xl"
+          className="bg-brand-900 rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 lg:p-16 text-[#F4F2EE] relative overflow-hidden shadow-2xl"
         >
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500/10 rounded-full blur-[120px] -mr-32 -mt-32" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/5 rounded-full blur-[120px] -ml-32 -mb-32" />
           
-          <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
             <div>
-              <div className="inline-flex items-center gap-3 mb-8">
+              <div className="inline-flex items-center gap-3 mb-6 md:mb-8">
                 <LucideIcons.BarChart3 className="text-accent-500" size={24} strokeWidth={1.5} />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-500">Inovação para Empresas</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-accent-500">Inovação para Empresas</span>
               </div>
-              <h3 className="text-4xl md:text-5xl font-bold mb-8 font-serif leading-[1.1]">
-                Sistema Emissor <br/><span className="text-accent-500 italic">de Notas</span>
+              <h3 className="text-4xl md:text-5xl font-bold mb-6 md:mb-8 font-serif leading-[1.1] text-balance">
+                Sistema Emissor <br className="hidden sm:block" /><span className="text-accent-500 italic">de Notas</span>
               </h3>
-              <p className="text-[#F4F2EE]/90 text-lg mb-10 font-medium leading-relaxed max-w-xl">
+              <p className="text-[#F4F2EE]/90 text-base md:text-lg mb-8 md:mb-10 font-medium leading-relaxed max-w-xl">
                 Conheça nosso novo sistema de emissão de notas. Uma solução desenhada para atender gargalos que o mercado atual ignora. Tecnologia a serviço do direito empresarial.
               </p>
-              <a href="#contact" className="inline-flex items-center gap-3 border border-accent-500/50 text-accent-500 px-8 py-4 rounded-full font-bold hover:bg-accent-500 hover:text-brand-900 transition-colors text-xs uppercase tracking-[0.2em]">
+              <a href="#contact" className="inline-flex items-center justify-center gap-3 border border-accent-500/50 text-accent-500 px-8 py-4 rounded-full font-bold hover:bg-accent-500 hover:text-brand-900 transition-colors text-[11px] md:text-xs uppercase tracking-[0.2em] w-full sm:w-auto">
                 Implantar Solução
               </a>
             </div>

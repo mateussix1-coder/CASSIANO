@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Information about the user.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "photoURL": { "type": "string", "format": "uri" },
+        "role": { "type": "string", "enum": ["client", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "MediaGeneration": {
+      "title": "Media Generation",
+      "description": "A generated image or video.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["image", "video"] },
+        "prompt": { "type": "string" },
+        "mediaUrl": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["processing", "completed", "error"] }
+      },
+      "required": ["userId", "type", "prompt", "createdAt", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "UserProfile" },
+      "description": "User profiles, keyed by uid"
+    },
+    "/media/{mediaId}": {
+      "schema": { "$ref": "MediaGeneration" },
+      "description": "Generated media mapped globally. Typically queried by userId"
+    }
+  }
+}

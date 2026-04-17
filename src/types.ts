@@ -14,26 +14,26 @@ export interface Message {
   content: string;
 }
 
-export const SERVICES: Service[] = [
+export const SECONDARY_SERVICES: Service[] = [
   {
-    id: 'certificacao-digital',
-    title: 'Certificação Digital',
-    description: 'Como franqueados oficiais, trazemos o que há de mais seguro em identidade digital. Atendimento flexível: Você escolhe entre a conveniência do Home Office ou a exclusividade do atendimento presencial com agenda marcada.',
-    icon: 'ShieldCheck',
-    category: 'digital'
+    id: 'traducoes',
+    title: 'Tradução Juramentada',
+    description: 'Traduções com validade legal em múltiplos idiomas, garantindo que seus documentos sejam aceitos em qualquer jurisdição internacional.',
+    icon: 'Languages',
+    category: 'international'
   },
   {
-    id: 'cartorio-transcricao',
-    title: 'Cartório e Transcrições',
-    description: 'Acesso direto aos registros para transcrições, buscas de certidões e regularizações rápidas. Essencial para brasileiros no exterior e estrangeiros chegando ao Brasil que precisam de segurança jurídica imediata.',
-    icon: 'FileText',
-    category: 'cartorial'
+    id: 'apostilamento',
+    title: 'Apostilamento de Haia',
+    description: 'Validação internacional rápida de documentos públicos brasileiros para uso no exterior, em conformidade com a Convenção da Apostila da Haia.',
+    icon: 'Globe',
+    category: 'international'
   },
   {
-    id: 'sistema-notas',
-    title: 'Escalabilidade de Inovação',
-    description: 'Implementamos um sistema inovador de emissão de notas para suprir uma demanda reprimida que os sistemas tradicionais não alcançam. Uma solução nova para um mercado que exige eficiência.',
-    icon: 'BarChart3',
-    category: 'digital'
+    id: 'assessoria-expatriados',
+    title: 'Assessoria para Expatriados',
+    description: 'Regularização documental completa para estrangeiros no Brasil ou brasileiros no exterior, simplificando processos imigratórios e fiscais.',
+    icon: 'Passport',
+    category: 'international'
   }
 ];

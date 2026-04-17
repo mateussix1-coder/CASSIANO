@@ -7,7 +7,7 @@ import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Assistant from './components/Assistant';
+import Portal from './components/Portal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -19,7 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <Services />
-        <Assistant />
+        <Portal />
         <Contact />
       </main>
       <Footer />

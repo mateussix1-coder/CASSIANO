@@ -61,7 +61,7 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button 
-          className={`md:hidden ${isScrolled ? 'text-brand-900' : 'text-white'}`}
+          className={`md:hidden p-2 -mr-2 ${isScrolled ? 'text-brand-900' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -72,18 +72,19 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white border-b border-slate-100 p-6 md:hidden shadow-xl"
+            initial={{ opacity: 0, scaleY: 0.95, y: -10 }}
+            animate={{ opacity: 1, scaleY: 1, y: 0 }}
+            exit={{ opacity: 0, scaleY: 0.95, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-[calc(100%+16px)] left-4 right-4 bg-white/95 backdrop-blur-xl border border-brand-900/10 p-6 rounded-2xl md:hidden shadow-2xl origin-top"
           >
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-5">
               {navLinks.map((link) => (
                 <a 
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium text-slate-700 hover:text-accent-500 transition-colors"
+                  className="text-base font-bold text-brand-900 hover:text-accent-500 transition-colors uppercase tracking-widest flex items-center justify-between border-b border-brand-900/5 pb-4 last:border-0 last:pb-0"
                 >
                   {link.name}
                 </a>
@@ -91,7 +92,7 @@ export default function Header() {
               <a 
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-brand-900 text-white px-6 py-3 rounded-xl text-center font-bold"
+                className="bg-brand-900 text-accent-500 px-6 py-4 rounded-xl text-center font-bold text-xs uppercase tracking-widest mt-2"
               >
                 Falar com Especialista
               </a>

@@ -1,0 +1,64 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: [users]
+    // Document ID: [uid]
+    // Fields:
+    //   - email: string (required) 
+    //   - name: string (required) 
+    //   - role: string (required)
+    //   - createdAt: string (required)
+    //
+    // Collection: [media]
+    // Document ID: [auto-id]
+    // Fields:
+    //   - userId: string (required)
+    //   - type: string (required, 'image' | 'video')
+    //   - prompt: string (required)
+    //   - mediaUrl: string
+    //   - createdAt: string (required)
+    //   - status: string (required, 'processing' | 'completed' | 'error')
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+    
+    // User Validator
+    function isValidUser() {
+      return hasRequiredFields(['email', 'name', 'role', 'createdAt']) &&
+        request.resource.data.role in ['client', 'admin'];
+    }
+
+    // Media Validator
+    function isValidMedia() {
+      return hasRequiredFields(['userId', 'type', 'prompt', 'createdAt', 'status']) &&
+        request.resource.data.type in ['image', 'video'] &&
+        request.resource.data.status in ['processing', 'completed', 'error'];
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser() && request.resource.data.role == 'client';
+      allow update: if isOwner(userId) && isValidUser() && request.resource.data.role == resource.data.role;
+    }
+    
+    match /media/{mediaId} {
+      // Users can only read their own media
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      // Users can only create their own media
+      allow create: if isAuthenticated() && isValidMedia() && request.resource.data.userId == request.auth.uid;
+      // Users can update their own media (e.g., status changes to complete)
+      allow update: if isAuthenticated() && isValidMedia() && resource.data.userId == request.auth.uid && request.resource.data.userId == request.auth.uid;
+    }
+  }
+}
