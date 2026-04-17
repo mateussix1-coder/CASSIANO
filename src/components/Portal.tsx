@@ -96,13 +96,13 @@ export default function Portal() {
 
   if (!user) {
     return (
-      <section id="portal" className="py-20 bg-[#0A1118] text-white">
-        <div className="max-w-xl mx-auto text-center px-6">
-           <LucideIcons.Lock size={48} className="mx-auto text-accent-500 mb-6" />
-           <h2 className="text-4xl font-serif mb-4">Portal exclusivo</h2>
-           <p className="text-white/70 mb-8">Faça login para utilizar a inteligência documental da Jus Digital, gerando análises, imagens e evidências de forma segura.</p>
-           <button onClick={handleLogin} className="bg-white text-brand-900 px-8 py-4 rounded-full font-bold uppercase tracking-widest flex items-center gap-3 mx-auto hover:bg-white/90">
-             <LucideIcons.LogIn size={18} /> Entrar com Google
+      <section id="portal" className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-xl mx-auto text-center px-6 bg-[#F8F8F8] p-12 rounded-lg border-b-4 border-brand-900 shadow-sm">
+           <LucideIcons.Lock size={48} className="mx-auto text-brand-900 mb-6" />
+           <h2 className="text-3xl font-bold text-brand-900 mb-4 uppercase tracking-tight">Portal Gov.br • Jus Digital</h2>
+           <p className="text-graphite-900/70 mb-8 font-medium">Faça login com sua conta Google para acessar os serviços de inteligência documental e certificação.</p>
+           <button onClick={handleLogin} className="bg-brand-900 text-white px-8 py-4 rounded-md font-bold uppercase tracking-widest flex items-center gap-3 mx-auto hover:bg-brand-800 shadow-lg">
+             <LucideIcons.LogIn size={18} /> Acessar com Google
            </button>
         </div>
       </section>
@@ -110,28 +110,29 @@ export default function Portal() {
   }
 
   return (
-    <section id="portal" className="py-20 bg-[#F4F2EE] relative min-h-[800px]">
+    <section id="portal" className="py-20 bg-[#F8F8F8] relative min-h-[800px]">
        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col md:flex-row gap-8">
           {/* Sidebar */}
-          <div className="w-full md:w-64 shrink-0 flex flex-col gap-4">
-            <h3 className="text-xl font-bold text-brand-900 mb-4 px-4 font-serif">Área do Cliente</h3>
-            <button onClick={() => setActiveTab('chat')} className={`text-left px-6 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all ${activeTab === 'chat' ? 'bg-brand-900 text-accent-500' : 'hover:bg-white text-graphite-900'}`}>Consulta com IA</button>
-            <button onClick={() => setActiveTab('image')} className={`text-left px-6 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all ${activeTab === 'image' ? 'bg-brand-900 text-accent-500' : 'hover:bg-white text-graphite-900'}`}>Gerar Documento Visual</button>
-            <button onClick={() => setActiveTab('video')} className={`text-left px-6 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all ${activeTab === 'video' ? 'bg-brand-900 text-accent-500' : 'hover:bg-white text-graphite-900'}`}>Gerar Evidência em Vídeo</button>
-            <div className="mt-8 flex items-center gap-4 px-4">
-               <img src={user.photoURL || ''} alt="Foto" className="w-10 h-10 rounded-full border border-graphite-900/10" referrerPolicy="no-referrer" />
+          <div className="w-full md:w-64 shrink-0 flex flex-col gap-2">
+            <h3 className="text-xs font-bold text-brand-900 mb-4 px-4 uppercase tracking-[0.2em]">Painel de Controle</h3>
+            <button onClick={() => setActiveTab('chat')} className={`text-left px-6 py-4 rounded-md font-bold text-xs uppercase tracking-wider transition-all border-l-4 ${activeTab === 'chat' ? 'bg-white border-brand-900 shadow-sm text-brand-900' : 'border-transparent text-graphite-900/60 hover:bg-white/50'}`}>Consulta com IA</button>
+            <button onClick={() => setActiveTab('image')} className={`text-left px-6 py-4 rounded-md font-bold text-xs uppercase tracking-wider transition-all border-l-4 ${activeTab === 'image' ? 'bg-white border-brand-900 shadow-sm text-brand-900' : 'border-transparent text-graphite-900/60 hover:bg-white/50'}`}>Gerar Documento</button>
+            <button onClick={() => setActiveTab('video')} className={`text-left px-6 py-4 rounded-md font-bold text-xs uppercase tracking-wider transition-all border-l-4 ${activeTab === 'video' ? 'bg-white border-brand-900 shadow-sm text-brand-900' : 'border-transparent text-graphite-900/60 hover:bg-white/50'}`}>Gerar Evidência</button>
+            
+            <div className="mt-auto pt-8 flex items-center gap-4 px-4 border-t border-gray-200 mt-8">
+               <img src={user.photoURL || ''} alt="Foto" className="w-10 h-10 rounded-full border border-gray-200" referrerPolicy="no-referrer" />
                <div className="flex-1 min-w-0">
-                 <p className="text-xs font-bold text-brand-900 truncate">{user.displayName}</p>
-                 <button onClick={() => auth.signOut()} className="text-[10px] text-graphite-900/60 uppercase hover:text-accent-500">Sair da conta</button>
+                 <p className="text-[11px] font-bold text-brand-900 truncate uppercase">{user.displayName}</p>
+                 <button onClick={() => auth.signOut()} className="text-[9px] text-[#004580] font-black uppercase hover:underline">Sair</button>
                </div>
             </div>
           </div>
           
           {/* Main Area */}
-          <div className="flex-1 bg-white rounded-[2.5rem] p-6 md:p-10 shadow-xl border border-graphite-900/5 min-h-[600px] relative">
+          <div className="flex-1 bg-white rounded-lg p-6 md:p-10 shadow-sm border border-gray-200 min-h-[600px] relative">
              <div className="absolute top-8 right-10 flex items-center gap-2">
-                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                 <span className="text-[10px] uppercase font-bold text-graphite-900/50 tracking-widest">Sincronizado via Firebase</span>
+                 <div className="w-2 h-2 rounded-full bg-success-gov animate-pulse"></div>
+                 <span className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.15em]">Operacional • Certificação Ativa</span>
              </div>
              
              {activeTab === 'chat' && <ChatTab user={user} />}
@@ -171,8 +172,20 @@ function ChatTab({ user }: { user: FirebaseUser }) {
       const ai = new GoogleGenAI({ apiKey });
       const modelName = isHighThinking ? 'gemini-3.1-pro-preview' : 'gemini-3.1-flash-lite-preview';
       const config = isHighThinking 
-        ? { thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH } }
-        : {};
+        ? { 
+            thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
+            systemInstruction: `Você é o Consultor Estratégico da Jus Digital, especialista em desburocratização global.
+Seu foco principal é auxiliar ${user.displayName} com CERTIFICADO DIGITAL e CERTIDÕES.
+
+DIRETRIZES:
+- Slogan: "Sincronizamos a burocracia brasileira com a agilidade do seu tempo".
+- Certificados: Emitimos Via Home Office (Remoto) ou Presencial com o Mateus.
+- Cartório: Transcrições, certidões de ônus digital, apostilamento de haia.
+- Conversão: Leve o cliente ao agendamento de 'Organização de Portfólio' ou para falar com o Mateus.`
+          }
+        : {
+            systemInstruction: `Você é o assistente ágil da Jus Digital. Foco: Certificado Digital (Mateus) e Certidões.`
+          };
 
       const response = await ai.models.generateContent({
         model: modelName,
@@ -211,9 +224,19 @@ function ChatTab({ user }: { user: FirebaseUser }) {
 
        <div ref={scrollRef} className="flex-1 overflow-y-auto mb-6 pr-4 space-y-6 scrollbar-thin">
           {messages.length === 0 && (
-             <div className="text-center text-graphite-900/50 mt-10">
-                <LucideIcons.MessageSquare size={32} className="mx-auto mb-4 opacity-50" />
-                <p>Nenhuma mensagem ainda. Inicie sua consultoria detalhando o caso.</p>
+             <div className="max-w-md mx-auto py-10">
+                <div className="bg-brand-900/5 border border-brand-900/10 rounded-3xl p-8 text-center text-brand-900">
+                   <div className="w-16 h-16 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-900 shadow-xl shadow-brand-900/10">
+                     <LucideIcons.Fingerprint size={32} />
+                   </div>
+                   <h5 className="text-xl font-serif font-bold mb-3">Assistência Jus Digital</h5>
+                   <p className="text-sm opacity-70 mb-6 font-sans">Sincronizamos a burocracia brasileira com a agilidade do seu tempo. Como podemos ajudar?</p>
+                   <div className="flex flex-wrap gap-2 justify-center">
+                      {['Certificado Digital', 'Busca de Certidões', 'Internacional'].map(label => (
+                        <button key={label} onClick={() => setInput(label)} className="px-4 py-2 bg-white border border-brand-900/10 rounded-full text-[11px] font-bold hover:border-brand-900 transition-all font-sans">{label}</button>
+                      ))}
+                   </div>
+                </div>
              </div>
           )}
           {messages.map((m, i) => (

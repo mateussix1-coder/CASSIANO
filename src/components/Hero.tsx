@@ -1,65 +1,82 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[100svh] flex items-center pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-[#0A1118]">
-      {/* Background Image Setup (Luxury dark office / marble style with city view) */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2670" 
-          alt="Jus Digital Luxury Office" 
-          fetchPriority="high"
-          className="w-full h-full object-cover object-center"
-          referrerPolicy="no-referrer"
-        />
-        {/* Dark overlay to merge with marble/dark sophisticated tone */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080d12]/95 via-[#080d12]/85 to-[#080d12]/70 md:to-[#080d12]/60 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080d12] via-[#080d12]/30 to-transparent" />
-      </div>
-
-      <div className="max-w-[1400px] w-full mx-auto px-6 md:px-8 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 md:gap-16 items-center">
+    <section id="home" className="relative pt-40 pb-20 overflow-hidden bg-[#F8F8F8]">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="inline-block bg-success-gov/10 text-success-gov px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+            Serviço Oficial • Jus Digital
+          </div>
           
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-8 z-20 mt-10 md:mt-0"
-          >
-            <div className="inline-flex items-center gap-4 mb-6 md:mb-8">
-              <div className="h-[1px] w-8 md:w-12 bg-accent-500"></div>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-accent-500">
-                O seu Elo Global
-              </span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.15] md:leading-[1.1] tracking-tight mb-6 md:mb-8 text-balance">
-              <span className="text-accent-500" style={{ textShadow: '0 0 40px rgba(198, 168, 124, 0.3)' }}>Certificado Digital</span> e<br className="hidden md:block" />
-              Certidões sem Fronteiras.
-            </h1>
-            
-            <p className="text-base md:text-xl text-white/70 font-medium mb-10 md:mb-12 max-w-2xl leading-relaxed text-balance">
-              Especialistas em emissão rápida de Certificados Digitais e busca de Certidões em cartórios de todo o Brasil. Unimos atendimento de alto padrão com a agilidade que cidadãos e empresas globais precisam.
-            </p>
+          <h1 className="text-5xl md:text-7xl font-bold text-brand-900 leading-[1.1] mb-8 tracking-tight font-sans">
+            Sua Identidade Digital no <span className="text-success-gov">Padrão Brasil.</span>
+          </h1>
+          
+          <p className="text-xl text-graphite-900/70 mb-10 max-w-lg leading-relaxed font-sans font-medium">
+            Emissão rápida de Certificados Digitais e busca de documentos em todos os cartórios do território nacional. Trust, Agilidade e Conformidade Legal.
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-stretch sm:items-center">
-              <a 
-                href="#services" 
-                className="bg-accent-500 text-brand-900 px-8 md:px-10 py-4 md:py-5 rounded-full font-bold tracking-widest flex items-center justify-center gap-3 hover:bg-[#d8bb8d] transition-all hover:translate-y-[-2px] shadow-[0_0_30px_rgba(198,168,124,0.3)] text-[11px] md:text-xs uppercase w-full sm:w-auto"
-              >
-                Emitir Certificado <ArrowRight size={18} />
-              </a>
-              <a 
-                href="#certidoes" 
-                className="bg-transparent border border-white/20 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold tracking-widest flex items-center justify-center gap-3 hover:bg-white/10 transition-all hover:translate-y-[-2px] text-[11px] md:text-xs uppercase backdrop-blur-sm w-full sm:w-auto mt-0"
-              >
-                Solicitar Certidões
-              </a>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a 
+              href="#portal" 
+              className="bg-brand-900 text-white px-8 py-5 rounded-md font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-800 transition-all shadow-lg text-[11px]"
+            >
+              Iniciar Agendamento <ArrowRight size={18} />
+            </a>
+            <a 
+              href="#services" 
+              className="bg-white border-2 border-brand-900 text-brand-900 px-8 py-5 rounded-md font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gray-50 transition-all text-[11px]"
+            >
+              Consultar Serviços
+            </a>
+          </div>
+
+          <div className="mt-12 flex items-center gap-6">
+            <div className="flex -space-x-3">
+              {[1,2,3,4].map(i => (
+                <img key={i} src={`https://picsum.photos/seed/legal${i}/100/100`} className="w-10 h-10 rounded-full border-2 border-white shadow-sm" alt="Usoer" referrerPolicy="no-referrer" />
+              ))}
             </div>
-          </motion.div>
-        </div>
+            <p className="text-xs text-graphite-900/60 font-bold">
+              +15.000 certificados emitidos este ano
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative hidden md:block"
+        >
+           <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 relative z-10">
+              <div className="bg-brand-900 rounded-2xl p-6 text-white mb-6">
+                 <ShieldCheck size={40} className="mb-4 text-accent-500" />
+                 <h3 className="text-xl font-bold mb-2">Conformidade ICP-Brasil</h3>
+                 <p className="text-white/70 text-sm">Validamos sua identidade seguindo os mais rigorosos padrões da Infraestrutura de Chaves Públicas Brasileira.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                 <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                    <span className="block text-2xl font-black text-brand-900">24h</span>
+                    <span className="text-[10px] uppercase font-bold text-gray-400">Tempo Médio</span>
+                 </div>
+                 <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                    <span className="block text-2xl font-black text-brand-900">99%</span>
+                    <span className="text-[10px] uppercase font-bold text-gray-400">Eficiência</span>
+                 </div>
+              </div>
+           </div>
+           {/* Abstract Gov Patterns */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-900/5 rounded-full blur-[100px] -z-10" />
+        </motion.div>
       </div>
     </section>
   );

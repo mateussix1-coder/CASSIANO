@@ -23,39 +23,35 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'top-0' : 'top-0 md:top-8'
+      } bg-white border-b-4 border-brand-900 shadow-sm`}
     >
-      <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(10,25,47,0.05)] border border-brand-900/10 rounded-full py-3 px-8' : ''
-      }`}>
-        <a href="#home" className="flex items-center gap-2 group">
-          <div className={`p-2 rounded-lg transition-transform shadow-lg group-hover:scale-110 ${isScrolled ? 'bg-brand-900 text-accent-500' : 'bg-accent-500 text-brand-900'}`}>
-            <Gavel size={22} strokeWidth={2}/>
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className={`text-xl font-serif font-bold tracking-tight ${isScrolled ? 'text-brand-900' : 'text-white'}`}>Jus Digital</span>
-            <span className={`text-[10px] uppercase tracking-widest font-sans font-semibold mt-[2px] ${isScrolled ? 'text-graphite-900/60' : 'text-white/70'}`}>Consultoria Jurídica</span>
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3">
+          <div className="flex flex-col leading-tight border-l-2 border-accent-500 pl-3">
+            <span className="text-2xl font-bold text-brand-900 tracking-tight font-sans">JUS DIGITAL</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-graphite-900/60 font-sans">Gov.br • Soluções Digitais</span>
           </div>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 h-full">
           {navLinks.map((link) => (
             <a 
               key={link.name}
               href={link.href}
-              className={`text-sm font-bold transition-colors uppercase tracking-widest ${isScrolled ? 'text-graphite-900 hover:text-accent-500' : 'text-white/80 hover:text-accent-500'}`}
+              className="text-sm font-bold text-brand-900 hover:text-success-gov transition-colors uppercase tracking-wider relative h-full flex items-center group"
             >
               {link.name}
+              <span className="absolute bottom-[-4px] left-0 w-0 h-1 bg-success-gov transition-all group-hover:w-full"></span>
             </a>
           ))}
           <a 
             href="#contact" 
-            className={`${isScrolled ? 'bg-brand-900 text-accent-500' : 'bg-white text-brand-900'} px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-md ml-4`}
+            className="bg-brand-900 text-white px-8 py-3 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-brand-800 transition-all shadow-btn ml-4"
           >
-            Falar com Especialista
+            Acessar Sistema
           </a>
         </nav>
 

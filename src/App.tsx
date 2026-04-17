@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import GovBar from './components/GovBar';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -15,6 +16,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-accent-500/30 selection:text-brand-900 scroll-smooth">
+      <GovBar />
       <Header />
       <main>
         <Hero />
